@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @contract.position.name %>
+</p>
+<p>
+  <strong>Magazine:</strong>
+  <%= @contract.magazine.name %>
+</p>
+<p>
+  <strong>Enologist:</strong>
+  <%= @contract.enologist.name %>
+</p>
+
+<%= link_to 'Edit', edit_contract_path(@contract) %> |
+<%= link_to 'Back', contracts_path %>

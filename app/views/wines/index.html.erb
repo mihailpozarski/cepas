@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Assembly</th>
+      <th>average score</th>
+      <th>raters names</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +17,20 @@
     <% @wines.each do |wine| %>
       <tr>
         <td><%= wine.name %></td>
+        <td><% wine.assemblies
+                    .includes(:strain)
+                    .pluck('strains.name', :percentage)
+                    .sort_by! {|r| r.first.downcase }
+                    .each do |assembly| %>
+            <%= "#{assembly.first} (#{assembly.last}%)" %>
+            <% end %>
+        </td>
+        <td><%= wine.score_average %></td>
+        <td>
+          <% wine.enologists.order(name: :asc).each do |enologist| %>
+          <%= "#{enologist.name} " %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', wine %></td>
         <td><%= link_to 'Edit', edit_wine_path(wine) %></td>
         <td><%= link_to 'Destroy', wine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,3 +42,9 @@
 <br>
 
 <%= link_to 'New Wine', new_wine_path %>
+<%= link_to 'Strains', strains_path %>
+<%= link_to 'Enologists', enologists_path %>
+<%= link_to 'Magazines', magazines_path %>
+<%= link_to 'Ratings', ratings_path %>
+<%= link_to 'Positons', positions_path %>
+<%= link_to 'Contracts', contracts_path %>

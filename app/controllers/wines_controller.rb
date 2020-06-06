@@ -15,6 +15,7 @@ class WinesController < ApplicationController
   # GET /wines/new
   def new
     @wine = Wine.new
+    Strain.order(name: :asc).find_each { |strain| @wine.assemblies.build(strain_id: strain.id) }
   end
 
   # GET /wines/1/edit
@@ -31,6 +32,11 @@ class WinesController < ApplicationController
         format.html { redirect_to @wine, notice: 'Wine was successfully created.' }
         format.json { render :show, status: :created, location: @wine }
       else
+        Strain.order(name: :asc).find_each do |strain| 
+          unless @wine.assemblies.any? { |a| a.strain.id == strain.id }
+            @wine.assemblies.build(strain_id: strain.id)
+          end
+        end
         format.html { render :new }
         format.json { render json: @wine.errors, status: :unprocessable_entity }
       end
@@ -69,6 +75,6 @@ class WinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wine_params
-      params.require(:wine).permit(:name)
+      params.require(:wine).permit(:name, assemblies_attributes: [:strain_id, :percentage])
     end
 end

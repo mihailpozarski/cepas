@@ -16,6 +16,15 @@
     <%= form.text_field :name %>
   </div>
 
+ <p>assemblies:</p>
+
+  <% wine.assemblies.each_with_index do |assembly, index| %>
+  <input type="hidden" value="<%=index + 1%>" name="wine[assemblies_attributes][<%=index%>][strain_id]" id="wine_assemblies_attributes_<=%index%>_strain_id">
+  <label><%= assembly.strain.name %></label>
+  <input type="number" name="wine[assemblies_attributes][<%=index%>][percentage]" id="wine_assemblies_attributes_<%=index%>_percentage">
+
+<% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
