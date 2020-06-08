@@ -5,6 +5,8 @@ ruby '2.5.7'
 
 gem 'pry'
 gem 'annotate'
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use sqlite3 as the database for Active Record

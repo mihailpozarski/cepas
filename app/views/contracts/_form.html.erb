@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :wines %>
-    <%= form.collection_select(:magazine_id, Magazine.all, :id, :name) %>
+    <%= form.collection_select(:magazine_id, Magazine.all, :id, :name, {}, {class: "form-control"}) %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :enologists %>
-    <%= form.collection_select(:enologist_id, Enologist.all, :id, :name) %>
+    <%= form.collection_select(:enologist_id, Enologist.all, :id, :name, {}, {class: "form-control"}) %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :position %>
-    <%= form.collection_select(:position_id, Position.all, :id, :name) %>
+    <%= form.collection_select(:position_id, Position.all, :id, :name, {}, {class: "form-control"}) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create Contract', class: "btn btn-primary" %>
   </div>
 <% end %>

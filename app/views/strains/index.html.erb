@@ -2,7 +2,7 @@
 
 <h1>Strains</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,9 +14,9 @@
     <% @strains.each do |strain| %>
       <tr>
         <td><%= strain.name %></td>
-        <td><%= link_to 'Show', strain %></td>
-        <td><%= link_to 'Edit', edit_strain_path(strain) %></td>
-        <td><%= link_to 'Destroy', strain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', strain, class: "btn btn-primary m-1" %></td>
+        <td><%= link_to 'Edit', edit_strain_path(strain), class: "btn btn-primary m-1" %></td>
+        <td><%= link_to 'Destroy', strain, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger m-1" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,10 +24,10 @@
 
 <br>
 
-<%= link_to 'New Strain', new_strain_path %>
-<%= link_to 'Wines', wines_path %>
-<%= link_to 'Enologists', enologists_path %>
-<%= link_to 'Magazines', magazines_path %>
-<%= link_to 'Ratings', ratings_path %>
-<%= link_to 'Positons', positions_path %>
-<%= link_to 'Contracts', contracts_path %>
+<%= link_to 'New Strain', new_strain_path, class: "btn btn-primary m-1" %>
+<%= link_to 'Wines', wines_path, class: "btn btn-primary m-1" %>
+<%= link_to 'Enologists', enologists_path, class: "btn btn-primary m-1" %>
+<%= link_to 'Magazines', magazines_path, class: "btn btn-primary m-1" %>
+<%= link_to 'Ratings', ratings_path, class: "btn btn-primary m-1" %>
+<%= link_to 'Positons', positions_path, class: "btn btn-primary m-1" %>
+<%= link_to 'Contracts', contracts_path, class: "btn btn-primary m-1" %>
