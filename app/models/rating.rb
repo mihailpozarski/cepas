@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: ratings
+#
+#  id           :integer          not null, primary key
+#  score        :float
+#  enologist_id :integer
+#  wine_id      :integer
+#
+# Indexes
+#
+#  index_ratings_on_enologist_id  (enologist_id)
+#  index_ratings_on_wine_id       (wine_id)
+#
 class Rating < ApplicationRecord
   belongs_to :wine
   belongs_to :enologist

@@ -1,4 +1,5 @@
 class WinesController < ApplicationController
+  skip_before_action :authorize_editor!, only: [:index]
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
 
   # GET /wines
